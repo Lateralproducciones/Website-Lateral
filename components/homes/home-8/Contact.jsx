@@ -1,7 +1,47 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import emailjs from 'emailjs-com';
 
-export default function Contact() {
+export default function Contact({ email = "", urlFacebook = "", urlInstagram = "" }) {
+
+  const [submitStatusText, setSubmitStatusText] = useState("");
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm(
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+      e.target,
+      process.env.NEXT_PUBLIC_EMAILJS_USER_ID
+    )
+    .then(() => {
+      setSubmitStatusText('Mensaje enviado correctamente!');
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      });
+      setTimeout(() => {
+        setSubmitStatusText("");
+      }, 5000);
+    }, () => {
+      setSubmitStatusText('Error al enviar el mensaje.');
+    })
+  };
+
   return (
     <div className="row">
       <div className="col-md-4 mb-sm-60">
@@ -12,88 +52,121 @@ export default function Contact() {
           <p>
             {/* Change the email address inside and link tag and href attribute */}
             Nos podés enviar un  correo a:
-            <a href="mailto:contacto@estudiolateral.com" className="text-link">
-              contacto@estudiolateral.com 
-            </a> 
-            {/* //TODO correo? */}
+            <a href={`mailto:${ email }`} className="text-link">
+              { email } 
+            </a>
+
           </p>
           <p>
             O dejarnos un mensaje para que los contactemos:
           </p>
           <div>
-            <a href="#" className="hs-social-link d-inline-flex me-1">
+
+            {urlFacebook &&
+            <a 
+              href={urlFacebook} 
+              className="hs-social-link d-inline-flex me-3" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
               <span className="visually-hidden">Facebook</span> 
               <i className="fa-facebook-f" />
-            </a> 
-            {/* //TODO redes facebook? */}
-            <a href="#" className="hs-social-link d-inline-flex">
-              <span className="visually-hidden">Instagram</span> 
+            </a> }
+
+            {urlInstagram && 
+            <a 
+              href={urlInstagram} 
+              className="hs-social-link d-inline-flex" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <span className="visually-hidden">Instagram</span>
               <i className="fa-instagram" />
-            </a> 
-            {/* //TODO redes Instagram? */}
+            </a>}
+
+
           </div>
         </div>
       </div>
       <div className="col-md-7 offset-md-1">
         {/* Contact Form */}
         <form
-          onSubmit={(e) => e.preventDefault()} //TODO Desarrollar envío de correo electrónico por form
+          onSubmit={ handleSubmit }
           className="form contact-form"
           id="contact_form"
         >
-          <div className="row mb-30">
-            <div className="col-lg-6 mb-md-30">
-              {/* Name */}
-              <label htmlFor="name" className="visually-hidden">
-                Nombre
-              </label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                className="input-lg input-circle form-control"
-                placeholder="Nombre"
-                pattern=".{3,100}"
-                required
-                aria-required="true"
-              />
-              {/* End Name */}
+
+          {!submitStatusText
+          ?<>
+            <div className="row mb-30">
+              <div className="col-lg-6 mb-md-30">
+                {/* Name */}
+                <label htmlFor="name" className="visually-hidden">
+                  Nombre
+                </label>
+                <input
+                  id="name"
+                  className="input-lg input-circle form-control"
+                  type="text"
+                  name="name"
+                  placeholder="Nombre"
+                  value={ formData.name }
+                  onChange={handleChange}
+                  pattern=".{3,100}"
+                  required
+                  aria-required="true"
+                />
+                {/* End Name */}
+              </div>
+              <div className="col-lg-6">
+
+                {/* Email */}
+                <label htmlFor="email" className="visually-hidden">
+                  Email
+                </label>
+                <input
+                  id="email"
+                  className="input-lg input-circle form-control"
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={ formData.email }
+                  onChange={handleChange}
+                  pattern=".{5,100}"
+                  required
+                  aria-required="true"
+                />
+                {/* End Email */}
+
+              </div>
             </div>
-            <div className="col-lg-6">
-              {/* Email */}
-              <label htmlFor="email" className="visually-hidden">
-                Email
+
+            {/* Message */}    
+            <div className="mb-50">
+              <label htmlFor="message" className="visually-hidden">
+                Mensaje
               </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
+              <textarea
+                id="message"
                 className="input-lg input-circle form-control"
-                placeholder="Email"
-                pattern=".{5,100}"
-                required
-                aria-required="true"
+                name="message"
+                placeholder="Mensaje"
+                value={ formData.message }
+                onChange={handleChange}
+                pattern=".{1,100}"
+                style={{ height: 130 }}
               />
-              {/* End Email */}
             </div>
-          </div>
-          {/* Message */}
-          <div className="mb-50">
-            <label htmlFor="message" className="visually-hidden">
-              Mensaje
-            </label>
-            <textarea
-              name="message"
-              id="message"
-              className="input-lg input-circle form-control"
-              style={{ height: 130 }}
-              placeholder="Mensaje"
-              defaultValue={""}
-            />
-          </div>
-          {/* End Message */}
+            {/* End Message */}
+          </>
+          :<h3 className="d-flex justify-content-center align-items-center section-caption black fs-5 mb-50" style={{ height:'220px', padding: '30px', backgroundColor: '#ffffff', borderRadius: '10px', border: '1px solid #3a3b3b', textAlign: 'center' }}>
+            { submitStatusText }
+          </h3>}
+          
+
           <div className="row">
             <div className="col-xs-4 col-lg-6 mb-md-30">
+
               {/* Send Button */}
               <button
                 className="submit_btn btn btn-mod btn-white btn-circle btn-ellipse"
@@ -103,11 +176,10 @@ export default function Contact() {
               >
                 <span className="btn-ellipse-inner">
                   <span className="btn-ellipse-unhovered">Enviar mensaje</span>
-                  <span className="btn-ellipse-hovered" aria-hidden="true">
-                    Enviar mensaje
-                  </span>
+                  <span className="btn-ellipse-hovered" aria-hidden="true">Enviar mensaje</span>
                 </span>
               </button>
+
             </div>
           </div>
           <div

@@ -174,7 +174,7 @@ Primary use: Multipurpose Template
   --container-width: 1350px;
   --section-padding-y: 120px;
   --menu-bar-height: 85px;
-  --menu-bar-height-scrolled: 65px;
+  --menu-bar-height-scrolled: 85px;
   --color-dark-1: #010101;
   --color-dark-2: #171717;
   --color-dark-3: #272727;
@@ -1927,8 +1927,11 @@ a.btn-mod:focus {
   display: block;
   transition: all 0.37s var(--ease-out-short), opacity 0.37s linear;
 }
+
+/* //TODO NOT-GOLD */
+
 .btn-animate-y-2 {
-  color: #ffeb8d;
+  color: #ffe88d; 
   display: block;
   position: absolute;
   top: 0;
@@ -4364,6 +4367,9 @@ a.logo:hover {
 .main-nav.dark .mobile-nav.active .mobile-nav-icon {
   background: transparent;
 }
+.main-nav.mobile-on.dark .inner-nav {
+  overflow: hidden;
+}
 .main-nav.mobile-on.dark .inner-nav.js-opened {
   border-top: 1px solid rgba(100, 100, 100, 0.4);
 }
@@ -5131,7 +5137,9 @@ a.logo:hover {
   line-height: 1.333 !important;
   letter-spacing: -0.0325em !important;
 }
-
+.gold-text{
+  color: #ffe88d;
+}
 .section-title-image {
   display: inline-block;
   max-width: 0.5em;

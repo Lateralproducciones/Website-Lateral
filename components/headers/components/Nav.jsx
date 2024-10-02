@@ -9,20 +9,27 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 export default function OnePageNav({ links, animateY = false }) {
+
   useEffect(() => {
     setTimeout(() => {
       scrollToElement();
     }, 1000);
     init_classic_menu_resize();
-    window.addEventListener("scroll", addScrollspy);
-
+  
+    const handleScroll = () => {
+      addScrollspy();
+    };
+  
+    window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", init_classic_menu_resize);
-
+  
     return () => {
-      window.removeEventListener("scroll", addScrollspy);
+      window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", init_classic_menu_resize);
     };
   }, []);
+  
+
   const pathname = usePathname();
 
   return (
@@ -41,7 +48,7 @@ export default function OnePageNav({ links, animateY = false }) {
               {animateY ? (
                 <span className="btn-animate-y">
                   <span className="btn-animate-y-1">{link.text}</span>
-                  <span className="btn-animate-y-2" aria-hidden="true">
+                  <span className="btn-animate-y-2" aria-hidden="true"> //TODO NOT-GOLD
                     {link.text}
                   </span>
                 </span>

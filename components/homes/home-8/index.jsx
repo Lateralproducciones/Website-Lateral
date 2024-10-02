@@ -9,6 +9,9 @@ export default function Home8({
   onePage = false,
   dark = false,
   eadge2 = false,
+  email,
+  urlFacebook,
+  urlInstagram
 }) {
   return (
     <>
@@ -28,11 +31,10 @@ export default function Home8({
                 data-splitting="lines"
               >
                 <h2 className="section-title-inline-1">Quiénes somos</h2>
-                Lateral Estudio es una productora que busca por sobre todas las cosas
-                contar historias a través de experiencias únicas.
+                Lateral Estudio es una productora que busca por sobre todas las cosas 
+                contar historias a través de <span className="gold-text">experiencias únicas.</span>
                 <br/>
-                Creemos en la necesidad de pensar fuera de la caja para crear eventos y 
-                momentos que desafían lo convencional y dar voz a quienes quieran compartir algo  con el mundo.
+                Creemos en la necesidad de pensar fuera de la caja para crear <span className="gold-text">eventos y momentos que desafían</span> lo convencional y dar voz a quienes quieran compartir algo  con el mundo.
               </div>
               {/* Accordion */}
               <Accordion content={[
@@ -48,14 +50,8 @@ export default function Home8({
                   Cada proyecto es una oportunidad para ver las cosas desde una nueva perspectiva y crear soluciones creativas que sorprendan. 
                   Trabajamos de la mano con nuestros clientes para transformar ideas en eventos auténticos que comunican historias poderosas.`,
                 },
-                // {
-                //   question: "¿En qué nos diferenciamos?",
-                //   answer: `Nos diferenciamos por nuestro enfoque en contar historias a través de eventos. 
-                //   No solo organizamos experiencias; las construimos a partir de ideas fuera de lo común, 
-                //   utilizando la creatividad para darle forma a relatos que capturan y mueven a la audiencia.`,
-                // },
                 {
-                  question: "¿A qué público apuntamos?",
+                  question: "¿A quiénes apuntamos?",
                   answer: `Apuntamos a personas, empresas y organizaciones que buscan algo más que un evento tradicional. 
                   Nos dirigimos a aquellos que desean contar su historia o comunicar su mensaje de forma creativa, 
                   ya sea a través de eventos culturales, corporativos o personales.`,
@@ -100,7 +96,7 @@ export default function Home8({
         </div>
       </section>
       <section
-        className={`page-section scrollSpysection  pt-0 pb-0  ${
+        className={`page-section scrollSpysection pt-5 pb-0  ${
           dark ? "bg-dark-1 light-content" : ""
         } `}
         id="eventos"
@@ -121,7 +117,7 @@ export default function Home8({
           <div className="blog-media mb-140 mb-xs-30">
             <Slider1
               title= "Evento"
-              text= "Un evento innovador que se destacó por el mensaje transmitido."
+              content= "Un evento innovador que se destacó por el mensaje transmitido."
               imageData={[
                 {
                   placeholderSrc: "/assets/images/placeholder.png",
@@ -139,7 +135,7 @@ export default function Home8({
           <div className="blog-media mb-140 mb-xs-30">
             <Slider2
               title= "Evento"
-              text= "Un evento innovador que se destacó por el mensaje transmitido."
+              content= "Un evento innovador que se destacó por el mensaje transmitido."
               imageData={[
                 {
                   placeholderSrc: "/assets/images/placeholder.png",
@@ -157,7 +153,7 @@ export default function Home8({
         </div>
       </section>
       <section
-        className={`page-section  scrollSpysection  ${
+        className={`page-section scrollSpysection ${
           dark ? "bg-dark-1 light-content" : ""
         } `}
         id="contacto"
@@ -174,7 +170,11 @@ export default function Home8({
             />
           </div>
 
-          <Contact />
+          <Contact 
+          email = { email }
+          urlFacebook = { urlFacebook }
+          urlInstagram = { urlInstagram }
+          />
         </div>
       </section>
     </>

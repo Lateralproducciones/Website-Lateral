@@ -8,7 +8,7 @@ export default function Slider2({ title = "Texto", content = "Contenido", imageD
   return (
     <div className="container relative">
       <div className="row">
-        <div className="col-md-5 col-lg-4 mb-sm-40 d-flex align-items-center">
+        <div className="col-md-5 col-lg-4 d-flex align-items-center">
           {/* About Project */}
           <div className="w-100">
             <h2 className="section-title-small mb-30 mb-md-20">
@@ -17,14 +17,6 @@ export default function Slider2({ title = "Texto", content = "Contenido", imageD
             <p className="text-gray mb-40 mb-sm-30">
               { content }
             </p>
-            <div>
-              <a
-                href="#"
-                className="btn btn-mod btn-white  btn-round btn-large btn-hover-anim"
-              >
-                <span>View Project 2</span>
-              </a>
-            </div>
           </div>
           {/* End About Project */}
         </div>
