@@ -28,7 +28,7 @@ export default function Contact({ email = "", urlFacebook = "", urlInstagram = "
       process.env.NEXT_PUBLIC_EMAILJS_USER_ID
     )
     .then(() => {
-      setSubmitStatusText('Mensaje enviado correctamente!');
+      setSubmitStatusText('Mensaje enviado correctamente');
       setFormData({
         name: '',
         email: '',
@@ -58,7 +58,7 @@ export default function Contact({ email = "", urlFacebook = "", urlInstagram = "
 
           </p>
           <p>
-            O dejarnos un mensaje para que los contactemos:
+            O dejarnos un mensaje para que nos contactemos:
           </p>
           <div>
 

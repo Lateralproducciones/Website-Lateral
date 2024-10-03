@@ -28,7 +28,7 @@ export default function Accordion({ content = [] }) {
 
   return (
     <dl className="accordion-1 accordion-1-slick mb-100 mb-md-60">
-      {content.map((elm, index) => (
+      {content.map((element, index) => (
         <React.Fragment key={index}>
           <dt
             onClick={() => {
@@ -36,7 +36,7 @@ export default function Accordion({ content = [] }) {
             }}
           >
             <a ref={(el) => (questionRefs.current[index] = el)}>
-              <span>{elm.question}</span>
+              <span>{element.question}</span>
               <i className="icon-plus" />
             </a>
           </dt>
@@ -45,7 +45,7 @@ export default function Accordion({ content = [] }) {
             ref={(el) => (answerRefs.current[index] = el)}
             style={{ display: "block" }}
           >
-            {elm.answer}
+            {element.answer}
           </dd>
         </React.Fragment>
       ))}

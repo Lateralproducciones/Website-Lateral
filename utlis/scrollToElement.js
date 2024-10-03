@@ -12,7 +12,7 @@ export const scrollToElement = () => {
         const id = anchor.href.split("#")[1];
         const element = document.getElementById(id);
         if (element) {
-          const yOffset = +70; // Adjust this offset as per your layout
+          const yOffset = +20; // Adjust this offset as per your layout
           const y =
             element.getBoundingClientRect().top + window.pageYOffset + yOffset;
           window.scrollTo({ top: y, behavior: "smooth" });
