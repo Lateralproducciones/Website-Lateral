@@ -7,11 +7,10 @@ import "swiper/css/effect-fade";
 import "react-modal-video/css/modal-video.css";
 import "photoswipe/dist/photoswipe.css";
 import { usePathname } from "next/navigation";
-import { parallaxMouseMovement, parallaxScroll } from "@/utlis/parallax";
-
+import { parallaxMouseMovement, parallaxScroll } from "@/utilities/parallax";
 import "tippy.js/dist/tippy.css";
-import { init_wow } from "@/utlis/initWowjs";
-import { headerChangeOnScroll } from "@/utlis/changeHeaderOnScroll";
+import { init_wow } from "@/utilities/initWowjs";
+import { headerChangeOnScroll } from "@/utilities/changeHeaderOnScroll";
 
 export default function RootLayout({ children }) {
   const path = usePathname();
