@@ -6,9 +6,19 @@ export default function Footer({ socialLinks = [] }) {
       <div className="page-section">
         <div className="row">
           {/* Copyright */}
-          <div className="col-lg-3 text-center text-lg-start mb-md-50">
-            Wered {new Date().getFullYear()}.
-          </div>
+          <p className="mb-0 link-hover-anim">POWERED BY</p>
+          <a 
+            href="https://www.weredco.com/" 
+            target="_blank"
+            rel="nofollow noopener"
+            className="col-lg-3 text-center text-lg-start link-hover-anim"
+            data-btn-animate="y"
+          >
+            <span className="btn-animate-y">
+              <span className="btn-animate-y-1">Wered 2024.</span>
+              <span className="btn-animate-y-2" aria-hidden="true">Wered 2024.</span>
+            </span>
+          </a>
           {/* End Copyright */}
           {/* Social Links */}
           <div className="col-lg-6 fw-social-inline text-center mb-md-40">
