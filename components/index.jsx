@@ -5,6 +5,7 @@ import Accordion from "./Accordion";
 import Slider1 from '@/components/Slider1';
 import Slider2 from '@/components/Slider2';
 import { eventosContent } from '@/content/eventos';
+import { InstagramFeed } from './InstagramFeed';
 
 export default function Home({
   onePage = false,
@@ -143,7 +144,7 @@ export default function Home({
             />
           </div>}
 
-          {eventosContent[3] && (
+          {eventosContent?.length > 3 && (
             <a href="/mas-eventos" className="d-flex flex-column align-items-center no-text-style w-25 mx-auto">
               <p className="text-link text-center fs-5">
                 <Image
@@ -160,6 +161,9 @@ export default function Home({
 
         </div>
 
+        {process.env.NEXT_PUBLIC_LIGHTWIDGET_ID &&
+        <InstagramFeed />}
+        
       </section>
       <section
         className={`page-section scrollSpysection ${
