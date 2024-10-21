@@ -16,7 +16,7 @@ export const metadata = {
 const socialLinks = {
   email: "contacto@estudiolateral.com", //TODO Completar con datos correctos
   urlFacebook: "http://www.facebook.com/estudiolateral", //TODO Completar con datos correctos
-  urlInstagram: "http://www.instagram.com/estudiolateral", //TODO Completar con datos correctos
+  urlInstagram: "http://www.instagram.com/lateral.estudio",
 }
 
 export default function MainPage() {
