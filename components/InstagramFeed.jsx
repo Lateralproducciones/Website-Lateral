@@ -18,8 +18,6 @@ export const InstagramFeed = () => {
         title="Instagram Feed"
       >
       </iframe>
-      {/* <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
-      <iframe src="//lightwidget.com/widgets/67029692a9ed5043be096e7ef9c550b1.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe> */}
     </div>
   );
 };
