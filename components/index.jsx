@@ -161,7 +161,7 @@ export default function Home({
 
         </div>
 
-        {process.env.NEXT_PUBLIC_LIGHTWIDGET_ID &&
+        {process.env.INSTAGRAM_TOKEN &&
         <InstagramFeed />}
         
       </section>
