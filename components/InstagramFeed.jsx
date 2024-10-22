@@ -105,24 +105,30 @@ export const InstagramFeed = () => {
 
   return (
     <div className="instagram-feed">
-      {isLoading && <p>Cargando...</p>}
-      {error && <p>Error: {error}</p>}
-      <Slider {...settings} className="gap">
-        {posts.map(post => (
-          <div key={post.id}>
-            <div className="post">
-              <a href={post.permalink} target="_blank" rel="noopener noreferrer">
-                {(post.media_type === 'CAROUSEL_ALBUM' || post.media_type === 'IMAGE') && (
-                  <img src={post.media_url} alt={post.caption} className="post-image" />
-                )}
-                {post.media_type === 'VIDEO' && (
-                  <video controls src={post.media_url} alt={post?.caption} className="post-video" />
-                )}
-              </a>
-            </div>
+    {isLoading ? (
+        <div className="d-flex justify-content-center mt-5">
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
           </div>
-        ))}
-      </Slider>
+        </div>
+      ) : (
+        <Slider {...settings} className="gap">
+          {posts.map(post => (
+            <div key={post.id}>
+              <div className="post">
+                <a href={post.permalink} target="_blank" rel="noopener noreferrer">
+                  {(post.media_type === 'CAROUSEL_ALBUM' || post.media_type === 'IMAGE') && (
+                    <img src={post.media_url} alt={post.caption} className="post-image" />
+                  )}
+                  {post.media_type === 'VIDEO' && (
+                    <video controls src={post.media_url} alt={post?.caption} className="post-video" />
+                  )}
+                </a>
+              </div>
+            </div>
+          ))}
+        </Slider>
+      )}
       <style jsx>{`
         .instagram-feed {
           width: 90%;
