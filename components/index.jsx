@@ -145,7 +145,7 @@ export default function Home({
           </div>}
 
           {eventosContent?.length > 3 && (
-            <a href="/mas-eventos" className="d-flex flex-column align-items-center no-text-style w-25 mx-auto">
+            <a href="/mas-eventos" className="d-flex flex-column align-items-center no-text-style w-75 sm:w-25 mx-auto">
               <p className="text-link text-center fs-5">
                 <Image
                 className="me-3"
